@@ -1,3 +1,4 @@
+import java.lang.Math;
 /**
  * 
  */
@@ -9,6 +10,25 @@
 public class BinaryHeap<E extends Comparable<E>> {
 	private ArrDin<E> vector;
 
+	public static void main(String args[]) {
+		BinaryHeap<Nodo> heap = new BinaryHeap<Nodo>();
+		
+		for (int i = 0; i<=10; i++){
+			int peso = (int) Math.round((Math.random()*300));
+			Nodo n = new Nodo("Ciudad_"+i,peso);
+			System.out.println(n+" "+n.getPeso());
+			heap.add(n);
+		}
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		for (int i = 0; i<=10; i++){
+		
+			Nodo n = (Nodo)heap.min();
+			heap.remove();
+			System.out.println(n+" "+n.getPeso());
+		}
+	}
 	public BinaryHeap(){
 		this.vector = new ArrDin<E>();
 	}
