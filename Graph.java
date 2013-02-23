@@ -1,12 +1,13 @@
+
 /**
  * Interfaz que define el uso de un grafo.
  * Luiscarlo Rivera, 09-11020
  * Jose Prado, 09-11006
  * 
- * Proyecto 1
+ * Proyecto 2
  */
 public interface Graph {
-	
+
 	/**
 	 * Agrega el nodo n. Si el nodo ya existe en el grafo, retorna false.
 	 * Si se agrega correctamente el nodo, retorna true.
@@ -56,7 +57,7 @@ public interface Graph {
 	 * Devuelve una lista con todos los nodos del grafo.
 	 */
 	public Lista<Nodo> getNodos();
-	
+
 	/**
 	 * Devuelve una lista con todos los arcos del grafo.
 	 */
@@ -66,7 +67,7 @@ public interface Graph {
 	 * Devuelve el numero de nodos que hay en el grafo.
 	 */
 	public int getNumNodos();
-	
+
 	/**
 	 * Devuelve el numero de arcos que hay en el grafo.
 	 */
@@ -99,4 +100,14 @@ public interface Graph {
 	public String toString();
 
 	public int colisiones();
+
+	/**
+	 * Retorna el nodo n. Si no existe dicho nodo, 
+	 * retorna null.
+	 */
+	public Nodo get(Nodo n);
+	
+	public Arco get(Arco a);
+	
+	public int pos(Nodo n);
 }
