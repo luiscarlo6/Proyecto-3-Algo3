@@ -5,7 +5,7 @@
  * 
  * Proyecto 1
  */
-public class Arco {
+public class Arco implements Comparable<Arco> {
 
     private String src = null;
     private String dst = null;
@@ -106,4 +106,16 @@ public class Arco {
     	
     	return this.src.hashCode()+this.dst.hashCode();
     }
+    
+	@Override
+	public int compareTo(Arco a) {
+		if(this.peso == a.peso){
+			return 0;
+		}else if(this.peso < a.peso){
+			return -1;
+		}
+		return 1;
+//		return this.id.compareTo(n.id);
+
+	}
 } /*Fin de arco*/
