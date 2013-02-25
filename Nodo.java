@@ -13,25 +13,27 @@ public class Nodo implements Comparable<Nodo>{
 	private String id = null;
 	private Nodo padre = null;
 	private int peso = Integer.MAX_VALUE;
+	private int gasolina = 0;
+	private int costo = Integer.MAX_VALUE;
 
 	/**
 	 * Constructor por defecto
 	 **/
-	
+
 	public Nodo(){
 		this.id = "";
 		this.padre =  null;
 		this.peso = Integer.MAX_VALUE;
 	}
-	
-	
+
+
 	/**
 	 * Crea un nodo con id i.
 	 */
 	public Nodo (String i) {
 		this.id = new String(i);
 	}
-	
+
 	/**
 	 * Crea un nodo con id i y peso p
 	 */
@@ -50,21 +52,21 @@ public class Nodo implements Comparable<Nodo>{
 		return sal;
 	}
 
-	
+
 
 	/**
-     * Retorna la representacion en String del nodo.
-     */
+	 * Retorna la representacion en String del nodo.
+	 */
 	@Override
 	public String toString() {
 
 		return new String(new String(this.id));
 	}
 
-	
+
 	/**
-     * Indica si el nodo de entrada es igual a this.
-     */
+	 * Indica si el nodo de entrada es igual a this.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		Nodo n;
@@ -82,7 +84,16 @@ public class Nodo implements Comparable<Nodo>{
 
 		return false;
 	}
-	
+
+	public int getCosto() {
+		return this.costo;
+	}
+
+	public void setCosto(int a) {
+
+		this.costo = a;
+	}
+
 	public int getPeso() {
 		return this.peso;
 	}
@@ -91,8 +102,16 @@ public class Nodo implements Comparable<Nodo>{
 
 		this.peso = a;
 	}
-	
-	
+
+	public int getGas() {
+		return this.gasolina;
+	}
+
+	public void setGas(int a) {
+
+		this.gasolina = a;
+	}
+
 	public Object getPadre() {
 		return this.padre;
 	}
@@ -101,7 +120,7 @@ public class Nodo implements Comparable<Nodo>{
 
 		this.padre = n;
 	}
-	
+
 	/**
 	 * Retorna el codigo hash para un nodo.
 	 */
@@ -113,13 +132,21 @@ public class Nodo implements Comparable<Nodo>{
 
 	@Override
 	public int compareTo(Nodo n) {
-		if(this.peso == n.peso){
+
+		if(this.costo == n.costo){
 			return 0;
-		}else if(this.peso < n.peso){
+		}else if(this.costo < n.costo){
 			return -1;
 		}
 		return 1;
-//		return this.id.compareTo(n.id);
+
+		//		if(this.peso == n.peso){
+		//			return 0;
+		//		}else if(this.peso < n.peso){
+		//			return -1;
+		//		}
+		//		return 1;
+		//		return this.id.compareTo(n.id);
 
 	}
 } /*Fin de nodo*/

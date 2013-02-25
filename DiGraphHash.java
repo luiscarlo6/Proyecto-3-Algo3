@@ -131,7 +131,7 @@ public class DiGraphHash implements Graph {
 		ListIterator<Nodo> nodos = ((MiLista<Nodo>) getNodos()).iterator();
 
 		int i = 0;
-		while (i != numNodos) {
+		while (i != this.numNodos) {
 			Nodo n = nodos.next();
 			nuevo.add((Nodo) n.clone());
 			i++;
@@ -141,7 +141,7 @@ public class DiGraphHash implements Graph {
 		ListIterator<Arco> arcos = ((MiLista<Arco>) getArcos()).iterator();
 
 		i = 0;
-		while (arcos.hasNext()) {
+		while (i!=this.numArcos) {
 			Arco a = arcos.next();
 			nuevo.add((Arco) a.clone());
 			i++;
