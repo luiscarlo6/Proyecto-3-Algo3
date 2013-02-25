@@ -30,7 +30,6 @@ public class Main {
 					int llegada = s.nextInt();
 					Nodo Src = new Nodo("Ciudad_"+partida);
 					Nodo Dst = new Nodo("Ciudad_"+llegada);
-					
 					Graph G = (Graph) grafo.clone();
 					DijkstraImpl d = new DijkstraImpl();
 					d.Dijkstra(G, Src, capacidadCarga);
@@ -41,8 +40,10 @@ public class Main {
 					 * **/
 					
 					Dst = G.get(Dst);
-					Nodo ultimo = d.getLast();
-					Dst.setCosto(Dst.getCosto()-(Dst.getGas()*ultimo.getPeso()));
+					
+					Nodo ultimo = (Nodo)Dst.getPadre();
+					if (ultimo !=null)
+						Dst.setCosto(Dst.getCosto()-(Dst.getGas()*ultimo.getPeso()));
 					if (Dst.getCosto()!=Integer.MAX_VALUE){
 						pw.println(String.format("%d", Dst.getCosto()));
 					}
