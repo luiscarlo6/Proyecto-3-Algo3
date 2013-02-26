@@ -107,6 +107,7 @@ public class Main {
 			while (i!=m){
 				int src = s.nextInt();
 				int dst = s.nextInt();
+				//aqui hay que verificar que el peso este entre 1-100
 				int peso = s.nextInt();
 				String id = "Ciudad_";
 				Arco arco = new Arco(id+src,id+dst,peso);
@@ -127,6 +128,7 @@ public class Main {
 			int i = 0;
 			while (i!=n){
 				if (linea.hasNextInt()){
+					//Aqui hay que verificar si peso esta entre 0 - 100
 					int peso = linea.nextInt();
 					String id = "Ciudad_"+i;
 					Nodo nodo = new Nodo(id,peso);
