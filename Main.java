@@ -16,12 +16,12 @@ public class Main {
 				archivoIn = new File(args[0]);
 				s = new Scanner(archivoIn);
 				grafo = llenar(s);
-				
+
 				int numCasos = s.nextInt();
-				
+
 				archivoOut = new FileWriter(args[1]);
 				pw = new PrintWriter(archivoOut);
-				
+
 				int i = 0;
 				while (i!=numCasos){
 					i++;
@@ -32,25 +32,28 @@ public class Main {
 					Nodo Dst = new Nodo("Ciudad_"+llegada);
 					Graph G = (Graph) grafo.clone();
 					DijkstraImpl d = new DijkstraImpl();
-					d.Dijkstra(G, Src, capacidadCarga);
+					d.Dijkstra(G, Src, Dst, capacidadCarga);
 					/**AQUI VA EL DIJKSTRA
 					 * 
 					 * DIkJSTRA(G,Src,capacidadCarga)
 					 * 
 					 * **/
-					
+
 					Dst = G.get(Dst);
-					
-					Nodo ultimo = (Nodo)Dst.getPadre();
-					if (ultimo !=null)
+
+//					Nodo ultimo = (Nodo)Dst.getPadre();
+					Nodo ultimo = (Nodo) d.getMinPadre();
+					if (ultimo !=null){
+						System.out.println(ultimo.toString());
 						Dst.setCosto(Dst.getCosto()-(Dst.getGas()*ultimo.getPeso()));
+					}
 					if (Dst.getCosto()!=Integer.MAX_VALUE){
 						pw.println(String.format("%d", Dst.getCosto()));
 					}
 					else{
 						pw.println(String.format("-1"));
 					}
-					
+
 				}
 				s.close();
 				archivoOut.close();
