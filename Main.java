@@ -86,7 +86,6 @@ public class Main {
 		}
 		else{
 			System.out.println("Error, el archivo no cumple el formato");
-			System.out.println("wa");
 		}
 		/**Fin buscar n y m**/
 

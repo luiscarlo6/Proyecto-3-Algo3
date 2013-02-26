@@ -10,30 +10,30 @@
 
 public interface ListIterator<E> {
 
-    /**
-     * Comprueba que exista un proximo elemento.
-     */
-    public boolean hasNext();
-    
-    /**
-     * Comprueba que exista un proximo elemento.
-     */
-    public boolean hasPrev();
+	/**
+	 * Comprueba que exista un proximo elemento.
+	 */
+	public boolean hasNext();
 
-    /**
-     * Devuelve el elemento asociado y avanza el iterador.
-     */
-    public E next();
-    
-    /**
-     * Devuelve el elemento asociado y retrocede el iterador.
-     */
-    public E prev();
+	/**
+	 * Comprueba que exista un proximo elemento.
+	 */
+	public boolean hasPrev();
 
-    /**
-     * Remueve de la lista el ultimo elemento retornado
-     */
-    public void unlink();
+	/**
+	 * Devuelve el elemento asociado y avanza el iterador.
+	 */
+	public E next();
+
+	/**
+	 * Devuelve el elemento asociado y retrocede el iterador.
+	 */
+	public E prev();
+
+	/**
+	 * Remueve de la lista el ultimo elemento retornado
+	 */
+	public void unlink();
 }
 
 // End ListIterator.

@@ -7,11 +7,11 @@
  */
 
 public class ArrDin<E>{
-	
+
 	private Object arr[] = null;
 	private int anterior,actual,ocupados;
 
-	
+
 	/**
 	 * Construcctor por defecto
 	 **/
@@ -21,7 +21,7 @@ public class ArrDin<E>{
 		this.ocupados = 0;
 		this.arr = new Object[actual];
 	}
-	
+
 	/**
 	 * Agrega un elemento en la posicion siguiente vacia
 	 **/
@@ -29,13 +29,13 @@ public class ArrDin<E>{
 		if (e==null){
 			return false;
 		}
-		
+
 		this.ampliar();
 		this.arr[this.ocupados] = e;
 		this.ocupados++;
 		return true;
 	}
-	
+
 	/**
 	 * Agrega un elemento a la posicion 
 	 * "pos" del arreglo 
@@ -49,10 +49,10 @@ public class ArrDin<E>{
 		}
 		this.arr[pos] = e;
 		return true;
-		
-		
+
+
 	}
-	
+
 	/**
 	 * Retorna el objeto almacenado en la posicion 
 	 * "pos" del arreglo
@@ -65,7 +65,7 @@ public class ArrDin<E>{
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Amplia el tamaño del arreglo en funcion de
 	 * la sucecion de fibonacci
@@ -76,11 +76,11 @@ public class ArrDin<E>{
 		}
 		Object viejoArr[] = this.arr;
 		this.resize();
-		
+
 		System.arraycopy(viejoArr, 0, this.arr, 0, viejoArr.length);
 
 	}
-	
+
 	/**
 	 * redimensiona el arreglo en funcion de la
 	 * sucesion de fibonacci, el arreglo queda vacio
@@ -90,12 +90,12 @@ public class ArrDin<E>{
 		int nuevoTam = this.actual+this.anterior;
 		this.anterior = this.actual;
 		this.actual = nuevoTam;
-		
+
 		Object nuevoArr[] = new Object[nuevoTam];
 		this.arr = nuevoArr;
 
 	}	
-	
+
 	/**
 	 * Elimina todos los elementos del arreglo
 	 * (el arreglo queda como recien creado)
@@ -104,7 +104,7 @@ public class ArrDin<E>{
 		this.ocupados = 0;
 		this.arr = new Object[actual];
 	}
-	
+
 	/**
 	 * Verifica si el arreglo contiene el elemento o
 	 **/
@@ -112,40 +112,40 @@ public class ArrDin<E>{
 		int i = 0;
 		boolean e = false;
 		if (this.arr.length == 0) 
-				return false;
+			return false;
 		else {
-		while((!this.arr[i].equals(o)) && (i < this.arr.length)) {
-			i++;
-		}
+			while((!this.arr[i].equals(o)) && (i < this.arr.length)) {
+				i++;
+			}
 
-		if (this.arr[i].equals(o)){
-			e = true;
-		}
-		return e;
+			if (this.arr[i].equals(o)){
+				e = true;
+			}
+			return e;
 		}
 	}
-	
+
 	/**
 	 * retorna el arreglo
 	 **/
 	public Object[] getArr(){
 		return this.arr;
 	}
-	
+
 	/**
 	 * retorna el tamaño del arreglo
 	 **/
 	public int tam(){
 		return this.arr.length;
 	}
-	
+
 	/**
 	 * retorna el numero de elementos guardados en el arreglo
 	 **/
 	public int numElem(){
 		return this.ocupados;
 	}
-	
+
 	/**
 	 * remueve el elemento que este en la
 	 * posicion "pos" del arreglo
@@ -165,7 +165,7 @@ public class ArrDin<E>{
 		return true;
 
 	}
-	
+
 	/**
 	 * remueve el elemento "e" del arreglo
 	 **/
@@ -183,7 +183,7 @@ public class ArrDin<E>{
 		this.ocupados--;
 		return true;
 	}
-	
+
 	/**
 	 * devuelve la posicion en el arreglo del
 	 *  elemento "e", devuelve -1 si no existe en el arreglo
@@ -192,25 +192,25 @@ public class ArrDin<E>{
 		if (e==null){
 			return -1;
 		}
-		
+
 		int i = 0;
 		if (this.arr.length == 0) 
-				return -1;
+			return -1;
 		else {
-		try{
-			while((!e.equals(this.arr[i])) && (i < this.arr.length)) {
-				i++;
+			try{
+				while((!e.equals(this.arr[i])) && (i < this.arr.length)) {
+					i++;
+				}
 			}
-		}
-		catch(java.lang.ArrayIndexOutOfBoundsException a){
+			catch(java.lang.ArrayIndexOutOfBoundsException a){
+				return -1;
+			}
+
+			if (e.equals(this.arr[i])){
+				return i;
+			}
 			return -1;
 		}
 
-		if (e.equals(this.arr[i])){
-			return i;
-		}
-		return -1;
-		}
-		
 	}
 } /*Fin de arrDin*/

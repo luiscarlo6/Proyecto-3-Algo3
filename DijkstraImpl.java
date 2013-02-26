@@ -1,26 +1,19 @@
-import java.util.PriorityQueue;
-
 public class DijkstraImpl {
 	private int maxGas;
-	private Nodo last;
 
 	public void Dijkstra(Graph grafo, Nodo s, int maxGas) {
 		this.maxGas = maxGas;
 		s = grafo.get(s);
 		s.setGas(0);
 		s.setCosto(0);
-		// BinaryHeap<Nodo> cola = new BinaryHeap<Nodo>();
-		PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>();
+		BinaryHeap<Nodo> cola = new BinaryHeap<Nodo>();
 		cola.add(s);
 
-		// while (!cola.esVacio()){
-		while (!cola.isEmpty()) {
-			// Nodo salida = (Nodo) cola.min();
-			Nodo salida = (Nodo) cola.peek();
+		while (!cola.esVacio()){
+
+			Nodo salida = (Nodo) cola.min();
 			salida = grafo.get(salida);
-			// cola.remove();
-			cola.poll();
-			// System.out.println(salida);
+			cola.remove();
 			Lista<Nodo> ady = grafo.getSuc(salida);
 			ListIterator<Nodo> it = ((MiLista<Nodo>) ady).iterator();
 
@@ -41,7 +34,7 @@ public class DijkstraImpl {
 		}
 	}
 
-	public void min(/* BinaryHeap<Nodo> */PriorityQueue<Nodo> cola,
+	public void min(BinaryHeap<Nodo> cola,
 			Nodo salida, Nodo llegada, Arco uv) {
 
 		if (llegada.getPeso() <= salida.getPeso()
@@ -49,20 +42,18 @@ public class DijkstraImpl {
 			llegada.setCosto(salida.getCosto()
 					+ (uv.getPeso() - salida.getGas()) * salida.getPeso());
 			llegada.setGas(0);
-			// this.last = salida;
 			llegada.setPadre(salida);
 			cola.add(llegada);
 			return;
-			
+
 		} else if (llegada.getPeso() > salida.getPeso()) {
 			llegada.setCosto(salida.getCosto()
 					+ (this.maxGas - salida.getGas()) * salida.getPeso());
 			llegada.setGas(this.maxGas - uv.getPeso());
-			// this.last = salida;
 			llegada.setPadre(salida);
 			cola.add(llegada);
 			return;
-			
+
 		} else if (uv.getPeso() <= salida.getGas()) {
 			llegada.setCosto(salida.getCosto());
 			llegada.setGas(salida.getGas() - uv.getPeso());
@@ -87,9 +78,5 @@ public class DijkstraImpl {
 			sal = (salida.getCosto());
 		}
 		return sal;
-	}
-
-	public Nodo getLast() {
-		return this.last;
 	}
 }

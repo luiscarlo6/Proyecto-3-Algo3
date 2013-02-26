@@ -106,8 +106,8 @@ public interface Graph {
 	 * retorna null.
 	 */
 	public Nodo get(Nodo n);
-	
+
 	public Arco get(Arco a);
-	
+
 	public int pos(Nodo n);
 }
