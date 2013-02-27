@@ -1,8 +1,11 @@
 public class DijkstraImpl {
 	private int maxGas;
 
-	public void Dijkstra(Graph grafo, Nodo s, int maxGas) {
-		this.maxGas = maxGas;
+	public DijkstraImpl(int max){
+		this.maxGas = max;
+	}
+	
+	public void Dijkstra(Graph grafo, Nodo s) {
 		s = grafo.get(s);
 		Estado inicial = new Estado(0,0,0);
 		s.agregarEstado(inicial);
@@ -78,22 +81,4 @@ public class DijkstraImpl {
 		llegada.setVisitado(true);
 		
 	}
-
-	public int costo(Nodo salida, Nodo llegada, Arco SaliLleg) {
-		int sal = 0;
-		if (llegada.getPeso() <= salida.getPeso()
-				&& SaliLleg.getPeso() > salida.getGas()) {
-			sal = ((SaliLleg.getPeso() - salida.getGas())
-					* salida.getPeso());
-
-		} else if (llegada.getPeso() > salida.getPeso()) {
-			sal = ((this.maxGas - salida.getGas())
-					* salida.getPeso());
-
-		} else if (SaliLleg.getPeso() <= salida.getGas()) {
-			sal = (0);
-		}
-		return sal;
-	}
-
 }

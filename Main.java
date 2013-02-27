@@ -31,8 +31,8 @@ public class Main {
 					Nodo Src = new Nodo("Ciudad_"+partida);
 					Nodo Dst = new Nodo("Ciudad_"+llegada);
 					Graph G = (Graph) grafo.clone();
-					DijkstraImpl d = new DijkstraImpl();
-					d.Dijkstra(G, Src, capacidadCarga);
+					DijkstraImpl d = new DijkstraImpl(capacidadCarga);
+					d.Dijkstra(G, Src);
 					/**AQUI VA EL DIJKSTRA
 					 * 
 					 * DIkJSTRA(G,Src,capacidadCarga)
