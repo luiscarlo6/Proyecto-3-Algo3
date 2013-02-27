@@ -43,7 +43,6 @@ public class Main {
 					
 					int tam = Dst.numEstados();
 					Object estados[] = Dst.Estados();
-					int sd=0;
 					int min = Integer.MAX_VALUE;
 					int g = 0;
 					while (g!= tam){
@@ -58,7 +57,7 @@ public class Main {
 						g++;
 					}
 					
-					System.out.println(min);
+//					System.out.println(min);
 //					if (Dst.getCosto()!=Integer.MAX_VALUE){
 					if (min!=Integer.MAX_VALUE){
 //						pw.println(String.format("%d", Dst.getCosto()));

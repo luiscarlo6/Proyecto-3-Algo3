@@ -72,7 +72,11 @@ public class DijkstraImpl {
 		
 		Estado mejorEstado = new Estado(precio,costo,gas);
 		llegada.agregarEstado(mejorEstado);
-		cola.add(llegada);
+		if (!llegada.getVisitado()){
+			cola.add(llegada);
+		}
+		llegada.setVisitado(true);
+		
 	}
 
 	public int costo(Nodo salida, Nodo llegada, Arco SaliLleg) {
