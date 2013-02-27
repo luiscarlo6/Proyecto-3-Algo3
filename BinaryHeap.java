@@ -77,4 +77,12 @@ public class BinaryHeap<E extends Comparable<E>> {
 			i = posPadre;
 		}
 	}
+	
+	public int tam(){
+		return this.vector.numElem();
+	}
+	
+	public Object[] toArray(){
+		return this.vector.getArr();
+	}
 }

@@ -15,6 +15,8 @@ public class Nodo implements Comparable<Nodo>{
 	private int peso = Integer.MAX_VALUE;
 	private int gasolina = 0;
 	private int costo = Integer.MAX_VALUE;
+	private BinaryHeap<Estado> estados = new BinaryHeap<Estado>();
+	private boolean visitado = false;
 
 	/**
 	 * Constructor por defecto
@@ -48,6 +50,8 @@ public class Nodo implements Comparable<Nodo>{
 	@Override
 	protected Object clone() {
 		Nodo sal = new Nodo(new String(this.id),this.peso);
+		sal.setCosto(this.costo);
+		sal.setGas(this.gasolina);
 		sal.setPadre(this.padre);
 		return sal;
 	}
@@ -94,6 +98,13 @@ public class Nodo implements Comparable<Nodo>{
 		this.costo = a;
 	}
 
+	public void setVisitado(boolean v){
+		this.visitado = v;
+	}
+	
+	public boolean getVisitado(){
+		return this.visitado;
+	}
 	public int getPeso() {
 		return this.peso;
 	}
@@ -120,6 +131,14 @@ public class Nodo implements Comparable<Nodo>{
 
 		this.padre = n;
 	}
+	
+	public void agregarEstado(Estado e){
+		this.estados.add(e);
+	}
+	
+	public int extraerCostoMin(){
+		return ((Estado) this.estados.min()).getCosto();
+	}
 
 	/**
 	 * Retorna el codigo hash para un nodo.
@@ -133,20 +152,19 @@ public class Nodo implements Comparable<Nodo>{
 	@Override
 	public int compareTo(Nodo n) {
 
-		if(this.costo == n.costo){
+		if(this.extraerCostoMin() == n.extraerCostoMin()){
 			return 0;
-		}else if(this.costo < n.costo){
+		}else if(this.extraerCostoMin() < n.extraerCostoMin()){
 			return -1;
 		}
 		return 1;
-
-		//		if(this.peso == n.peso){
-		//			return 0;
-		//		}else if(this.peso < n.peso){
-		//			return -1;
-		//		}
-		//		return 1;
-		//		return this.id.compareTo(n.id);
-
+	}
+	
+	public int numEstados(){
+		return this.estados.tam();
+	}
+	
+	public Object[] Estados(){
+		return this.estados.toArray();
 	}
 } /*Fin de nodo*/

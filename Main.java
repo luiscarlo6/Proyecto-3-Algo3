@@ -32,7 +32,7 @@ public class Main {
 					Nodo Dst = new Nodo("Ciudad_"+llegada);
 					Graph G = (Graph) grafo.clone();
 					DijkstraImpl d = new DijkstraImpl();
-					d.Dijkstra(G, Src, Dst, capacidadCarga);
+					d.Dijkstra(G, Src, capacidadCarga);
 					/**AQUI VA EL DIJKSTRA
 					 * 
 					 * DIkJSTRA(G,Src,capacidadCarga)
@@ -40,15 +40,29 @@ public class Main {
 					 * **/
 
 					Dst = G.get(Dst);
-
-//					Nodo ultimo = (Nodo)Dst.getPadre();
-					Nodo ultimo = (Nodo) d.getMinPadre();
-					if (ultimo !=null){
-						System.out.println(ultimo.toString());
-						Dst.setCosto(Dst.getCosto()-(Dst.getGas()*ultimo.getPeso()));
+					
+					int tam = Dst.numEstados();
+					Object estados[] = Dst.Estados();
+					int sd=0;
+					int min = Integer.MAX_VALUE;
+					int g = 0;
+					while (g!= tam){
+						Estado act =(Estado) estados[g];
+						if (act==null){
+							break;
+						}
+						int costo = act.getCosto() - (act.getGas()*act.getPrecio());
+						if (min > costo){
+							min = costo;
+						}
+						g++;
 					}
-					if (Dst.getCosto()!=Integer.MAX_VALUE){
-						pw.println(String.format("%d", Dst.getCosto()));
+					
+					System.out.println(min);
+//					if (Dst.getCosto()!=Integer.MAX_VALUE){
+					if (min!=Integer.MAX_VALUE){
+//						pw.println(String.format("%d", Dst.getCosto()));
+						pw.println(String.format("%d", min));
 					}
 					else{
 						pw.println(String.format("-1"));
