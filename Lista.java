@@ -1,13 +1,16 @@
+
 /**
  * Interfaz que define el comportamiento de una lista
- * 
+ *
  * Esta es una clase parametrizada con tipo (clase) E; i.e., la
  * lista contiene elementos de tipo E.
- * 
+ *
  * Luiscarlo Rivera, 09-11020
  * Jose Prado, 09-11006
- * 
- * Proyecto 1
+ *
+ * Proyecto 3
+ * Prof Lab: Juan Arocha
+ *
  * @param <E> TIpo de clase que guardara la lista
  */
 public interface Lista<E> {
@@ -28,7 +31,7 @@ public interface Lista<E> {
     /**
      * Determina si el elemento dado esta en la lista.
      * @param element elemento a verificar
-     * @return true si contiene el elemento, false en caso contrario 
+     * @return true si contiene el elemento, false en caso contrario
      */
     public boolean contains(E element);
 
@@ -65,5 +68,4 @@ public interface Lista<E> {
      * @return Arreglo de elementos
      */
     public Object[] toArray();
-
 }

@@ -1,14 +1,15 @@
+
 /**
  * Interfaz que describe un iterador sobre listas.
  * Es una interface parametrizada con tipo (clase) E.
- * 
+ *
  * Luiscarlo Rivera, 09-11020
  * Jose Prado, 09-11006
- * 
- * Proyecto 1
+ *
+ * Proyecto 3
+ * Prof Lab: Juan Arocha
  * @param <E> Clase de la estructura de datos a iterar
  */
-
 public interface ListIterator<E> {
 
     /**
