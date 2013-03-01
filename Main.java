@@ -38,6 +38,14 @@ public class Main {
 					int llegada = s.nextInt();
 					Nodo Src = new Nodo("Ciudad_" + partida);
 					Nodo Dst = new Nodo("Ciudad_" + llegada);
+					
+					// se chequea que ambos nodos pertenescan al grafo
+					// en caso contrario se imprime -1
+					if(!(grafo.contains(Src) && grafo.contains(Dst))){
+						pw.println(String.format("-1"));
+						continue;
+					}
+					
 					Graph G = (Graph) grafo.clone();
 					DijkstraImpl d = new DijkstraImpl(capacidadCarga);
 					d.Dijkstra(G, Src);
